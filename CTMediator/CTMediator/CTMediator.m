@@ -36,12 +36,6 @@
 
 - (id)performActionWithUrl:(NSURL *)url completion:(void (^)(NSDictionary *))completion
 {
-#warning todo 修改aaa为你自己app的scheme
-    if (![url.scheme isEqualToString:@"aaa"]) {
-        // 这里就是针对远程app调用404的简单处理了，根据不同app的产品经理要求不同，你们可以在这里自己做需要的逻辑
-        return @(NO);
-    }
-    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     NSString *urlString = [url query];
     for (NSString *param in [urlString componentsSeparatedByString:@"&"]) {
