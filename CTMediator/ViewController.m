@@ -22,6 +22,27 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @implementation ViewController
 
+#pragma mark - getters and setters
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    }
+    return _tableView;
+}
+
+- (NSArray *)dataSource
+{
+    if (_dataSource == nil) {
+        _dataSource = @[@"present detail view controller", @"push detail view controller", @"present image", @"present image when error", @"show alert", @"table view cell"];
+    }
+    return _dataSource;
+}
+
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -88,24 +109,4 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
     }
 }
 
-#pragma mark - getters and setters
-- (UITableView *)tableView
-{
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
-    }
-    return _tableView;
-}
-
-- (NSArray *)dataSource
-{
-    if (_dataSource == nil) {
-        _dataSource = @[@"present detail view controller", @"push detail view controller", @"present image", @"present image when error", @"show alert", @"table view cell"];
-    }
-    return _dataSource;
-}
 @end
