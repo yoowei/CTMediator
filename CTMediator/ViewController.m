@@ -38,7 +38,7 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
 - (NSArray *)dataSource
 {
     if (_dataSource == nil) {
-        _dataSource = @[@"present detail view controller", @"push detail view controller", @"present image", @"present image when error", @"show alert", @"table view cell"];
+        _dataSource = @[@"present detail view controller", @"push detail view controller", @"present image", @"present image when error", @"show alert", @"table view cell", @"testRomoteAPP"];
     }
     return _dataSource;
 }
@@ -46,7 +46,6 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view addSubview:self.tableView];
 }
 
@@ -76,15 +75,14 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (indexPath.row == 0) {
         UIViewController *viewController = [[CTMediator sharedInstance] CTMediator_viewControllerForDetail];
-        
-        // 获得view controller之后，在这种场景下，到底push还是present，其实是要由使用者决定的，mediator只要给出view controller的实例就好了
         [self presentViewController:viewController animated:YES completion:nil];
     }
-    
     if (indexPath.row == 1) {
         UIViewController *viewController = [[CTMediator sharedInstance] CTMediator_viewControllerForDetail];
         [self.navigationController pushViewController:viewController animated:YES];
     }
+     // 获得view controller之后，在这种场景下，到底push还是present，其实是要由使用者决定的，mediator只要给出view controller的实例就好了
+    
     
     if (indexPath.row == 2) {
         // 这种场景下，很明显是需要被present的，所以不必返回实例，mediator直接present了
@@ -101,11 +99,17 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
             // 做你想做的事
         }];
     }
-    
     if (indexPath.row == 5) {
         TableViewController *tableViewController = [[TableViewController alloc] init];
         [self presentViewController:tableViewController animated:YES completion:nil];
     }
+    if (indexPath.row == 6) {
+        
+        NSString *curRoue=@"yooweiScheme://TableViewController/testRomoteWithParams:?name=yoowei";
+//        NSString *curRoue=@"yooweiScheme://TableViewController/testRomoteWithOutParams";
+        [[CTMediator sharedInstance] performActionWithUrl:[NSURL URLWithString:curRoue] completion:^(NSDictionary *info) {
+            NSLog(@"手厅4.0架构测试");
+        }];
+    }
 }
-
 @end

@@ -94,4 +94,15 @@
     return _closeButton;
 }
 
+//测试远程调用APP
+-(id)testRomoteWithParams:(NSDictionary*)strDic{
+    
+    NSLog(@"测试yoowei测试远程调用APP的参数是什么？%@",strDic);
+    return nil;
+
+}
+-(id)testRomoteWithOutParams{
+    NSLog(@"测试yoowei测试远程调用APP不带参数");
+    return nil;
+}
 @end

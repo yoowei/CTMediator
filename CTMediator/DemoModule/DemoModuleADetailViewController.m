@@ -38,7 +38,7 @@
     [self.valueLabel topInContainer:70 shouldResize:NO];
     [self.valueLabel centerXEqualToView:self.view];
     
-    self.imageView.size = CGSizeMake(100, 100);
+    self.imageView.size = CGSizeMake(200, 300);
     [self.imageView centerEqualToView:self.view];
     
     self.returnButton.size = CGSizeMake(100, 100);

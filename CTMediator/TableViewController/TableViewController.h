@@ -10,4 +10,8 @@
 
 @interface TableViewController : UIViewController
 
+//测试远程调用
+-(id)testRomoteWithParams:(NSDictionary *)strDic;
+-(id)testRomoteWithOutParams;
+
 @end

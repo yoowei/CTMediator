@@ -8,14 +8,14 @@
 
 #import "CTMediator+CTMediatorModuleAActions.h"
 
-NSString * const kCTMediatorTargetA = @"A";
+NSString * const kCTMediatorTargetA = @"Target_A";
 
-NSString * const kCTMediatorActionNativFetchDetailViewController = @"nativeFetchDetailViewController";
-NSString * const kCTMediatorActionNativePresentImage = @"nativePresentImage";
-NSString * const kCTMediatorActionNativeNoImage = @"nativeNoImage";
-NSString * const kCTMediatorActionShowAlert = @"showAlert";
-NSString * const kCTMediatorActionCell = @"cell";
-NSString * const kCTMediatorActionConfigCell = @"configCell";
+NSString * const kCTMediatorActionNativFetchDetailViewController = @"Action_nativeFetchDetailViewController:";
+NSString * const kCTMediatorActionNativePresentImage = @"Action_nativePresentImage:";
+NSString * const kCTMediatorActionNativeNoImage = @"Action_nativeNoImage:";
+NSString * const kCTMediatorActionShowAlert = @"Action_showAlert:";
+NSString * const kCTMediatorActionCell = @"Action_cell:";
+NSString * const kCTMediatorActionConfigCell = @"Action_configCell:";
 
 @implementation CTMediator (CTMediatorModuleAActions)
 
