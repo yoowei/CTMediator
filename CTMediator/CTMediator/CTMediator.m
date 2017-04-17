@@ -88,7 +88,8 @@
 {
     
     NSString *targetClassString = [NSString stringWithFormat:@"%@", targetName];
-    NSString *actionString = [NSString stringWithFormat:@"%@", actionName];//注意带参数的方法名字和不带参数的方法名字不同
+    NSString *actionString = [NSString stringWithFormat:@"%@", actionName];
+    Class targetClass;
     
     NSObject *target = self.cachedTarget[targetClassString];
     if (target == nil) {
@@ -119,7 +120,7 @@
 #pragma clang diagnostic pop
     } else {
         // 有可能target是Swift对象
-        actionString = [NSString stringWithFormat:@"Action_%@WithParams:", actionName];
+        actionString = [NSString stringWithFormat:@"%@WithParams:", actionName];
         action = NSSelectorFromString(actionString);
         if ([target respondsToSelector:action]) {
 #pragma clang diagnostic push
@@ -136,7 +137,10 @@
             if ([target respondsToSelector:action]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                return [target performSelector:action withObject:params];
+                if (params&&params.count>0) {
+                    return [target performSelector:action withObject:params];
+                }
+                return [target performSelector:action];
 #pragma clang diagnostic pop
             } else {
                 // 这里也是处理无响应请求的地方，在notFound都没有的时候，这个demo是直接return了。实际开发过程中，可以用前面提到的固定的target顶上的。
